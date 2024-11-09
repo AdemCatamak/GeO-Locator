@@ -1,0 +1,20 @@
+{
+  "PORT": "8080",
+  "ShowUnexpectedErrors": true,
+  "Locations": [
+    {
+      "Ip": "127.0.0.1",
+      "GeoLocation": {
+        "Country": "Czechia",
+        "City": "Prague"
+      }
+    },
+    {
+      "Ip": "::1",
+      "GeoLocation": {
+        "Country": "Czechia",
+        "City": "Prague"
+      }
+    }
+  ]
+}

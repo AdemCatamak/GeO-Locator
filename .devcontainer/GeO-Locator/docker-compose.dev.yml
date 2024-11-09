@@ -1,0 +1,15 @@
+services:
+
+  gl-dev-container:
+    container_name: gl-dev-container
+    image: golang:1.22
+    volumes:
+      - ../../:/workspace
+    command: sleep infinity
+    environment:
+      - PORT=8080
+      - GOROOT=/usr/local/go
+      - GOPATH=/go
+      - GO111MODULE=on
+    ports:
+      - "8080:8080"

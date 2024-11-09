@@ -1,0 +1,13 @@
+{
+    "name": "GeO-Locator Dev Container",
+    "dockerComposeFile": [
+      "docker-compose.dev.yml"
+    ],
+    "service": "gl-dev-container",
+    "workspaceFolder": "/workspace",
+    "customizations" : {
+      "jetbrains" : {
+        "backend" : "GoLand"
+      }
+    }
+  }
