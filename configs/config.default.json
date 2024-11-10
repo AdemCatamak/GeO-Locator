@@ -16,5 +16,10 @@
         "City": "Prague"
       }
     }
-  ]
+  ],
+  "SelectedGeoLocatorProvider": 2,
+  "IpInfoSettings": {
+    "ApiKey": "YOUR_API_KEY",
+    "ApiUrl": "https://ipinfo.io"
+  }
 }

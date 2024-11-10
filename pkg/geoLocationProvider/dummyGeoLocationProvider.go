@@ -13,7 +13,7 @@ type dummyGeoLocationProvider struct {
 func newDummyGeoLocationProvider() dummyGeoLocationProvider {
 	configManager := config.GetConfigManager()
 	var locationList []GeoLocationCollectionItem
-	configManager.GetObj("Locations", &locationList)
+	configManager.GetObj(config.LocationsKey, &locationList)
 
 	data := map[string]*GeoLocation{}
 	for _, item := range locationList {
@@ -25,8 +25,8 @@ func newDummyGeoLocationProvider() dummyGeoLocationProvider {
 	}
 }
 
-func (d dummyGeoLocationProvider) GetGeoLocation(ip string) *GeoLocation {
-	geoLocation := d.data[ip]
+func (p dummyGeoLocationProvider) GetGeoLocation(ip string) *GeoLocation {
+	geoLocation := p.data[ip]
 	if geoLocation == nil {
 		panic(customErrors.NewCodedCustomError(fmt.Sprintf("GeoLocation not found for '%s'", ip), 404))
 	}

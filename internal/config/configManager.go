@@ -5,6 +5,7 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 	"log"
+	"os"
 	"sync"
 )
 
@@ -63,6 +64,14 @@ func loadConfig() {
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file: %v", err)
 	}
+
+	if _, err := os.Stat("configs/secret.json"); err == nil {
+		viper.SetConfigFile("configs/secret.json")
+		if err := viper.MergeInConfig(); err != nil {
+			log.Fatalf("Unable to read config file: %v", err)
+		}
+	}
+
 	viper.AutomaticEnv()
 }
 
