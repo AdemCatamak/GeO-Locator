@@ -2,7 +2,9 @@ package geoLocationProvider
 
 import (
 	"GeO-Locator/internal/config"
+	"GeO-Locator/internal/customErrors"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -39,8 +41,10 @@ func (p ipInfoGeoLocationProvider) GetGeoLocation(ip string) *GeoLocation {
 		panic(err)
 	}
 
-	if httpRes.StatusCode != http.StatusOK {
-		panic(httpRes.Status)
+	if httpRes.StatusCode == http.StatusNotFound {
+		panic(customErrors.NewCodedCustomError(fmt.Sprintf("GeoLocation not found for '%s'", ip), 404))
+	} else if httpRes.StatusCode != http.StatusOK {
+		panic(fmt.Sprintf("Unexpected status code: %d", httpRes.StatusCode))
 	}
 
 	defer func(Body io.ReadCloser) {

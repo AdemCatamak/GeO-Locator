@@ -9,3 +9,7 @@ func NewBasicCustomError(message string) *BasicCustomError {
 		Message: message,
 	}
 }
+
+func (e BasicCustomError) Error() string {
+	return e.Message
+}
